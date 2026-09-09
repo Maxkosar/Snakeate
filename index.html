@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Snakeate, tu registro simple de snacks y calorías.">
+  <title>Snakeate | Registro de snacks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#inicio" aria-label="Snakeate inicio">
+        <span class="brand-mark">S</span>
+        <span>Snakeate</span>
+      </a>
+      <div class="profile-card">
+        <div class="avatar">MR</div>
+        <div><strong>María R.</strong><small>Plan equilibrado</small></div>
+        <button class="icon-button" title="Opciones de perfil" aria-label="Opciones de perfil">···</button>
+      </div>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a class="nav-link active" href="#inicio"><span>⌂</span> Resumen</a>
+        <a class="nav-link" href="#historial"><span>◷</span> Historial</a>
+        <a class="nav-link" href="#estadisticas"><span>↗</span> Estadísticas</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="tip-card"><span class="tip-icon">✦</span><strong>Pequeños pasos</strong><p>La constancia importa más que la perfección.</p></div>
+        <a class="nav-link" href="#ajustes"><span>⚙</span> Ajustes</a>
+      </div>
+    </aside>
+
+    <main class="main-content" id="inicio">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark">S</span><span>Snakeate</span></div>
+        <div class="date-picker"><button class="icon-button" id="previous-day" aria-label="Día anterior">‹</button><span id="current-date">Hoy, 12 de junio</span><button class="icon-button" id="next-day" aria-label="Día siguiente">›</button></div>
+        <button class="avatar small-avatar" title="Abrir perfil" aria-label="Abrir perfil">MR</button>
+      </header>
+
+      <section class="welcome-row">
+        <div><p class="eyebrow">MI RESUMEN</p><h1>Hola, María <span>✦</span></h1><p class="muted">Un vistazo amable a tus hábitos de esta semana.</p></div>
+        <div class="snack-visual" aria-hidden="true"><span class="visual-fruit">●</span><span class="visual-chip">◆</span><span class="visual-spark">✦</span></div>
+        <button class="primary-button" id="open-modal"><span>+</span> Registrar snack</button>
+      </section>
+
+      <section class="metric-grid" aria-label="Resumen de hoy">
+        <article class="metric-card accent-card"><div class="metric-heading"><span>Snacks de hoy</span><span class="metric-icon">●</span></div><strong id="today-count">2 <small>/ 3</small></strong><div class="progress-track"><span id="today-progress" style="width: 67%"></span></div><p><span id="remaining-count">1</span> snack disponible</p></article>
+        <article class="metric-card"><div class="metric-heading"><span>Calorías de hoy</span><span class="metric-icon peach">⌁</span></div><strong id="today-calories">280 <small>kcal</small></strong><p class="metric-note"><span class="trend-up">↓ 12%</span> vs. promedio diario</p></article>
+        <article class="metric-card"><div class="metric-heading"><span>Meta semanal</span><span class="metric-icon green">✓</span></div><strong id="week-count">11 <small>/ 21</small></strong><p class="metric-note">snacks registrados esta semana</p></article>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel chart-panel" id="estadisticas">
+          <div class="panel-header"><div><h2>Ritmo semanal</h2><p>Tu actividad de los últimos 7 días</p></div><button class="select-button" id="chart-range">Esta semana <span>⌄</span></button></div>
+          <div class="chart-legend"><span><i class="legend-dot"></i> Snacks registrados</span><span><i class="legend-line"></i> Meta diaria</span></div>
+          <div class="chart-area" id="weekly-chart" aria-label="Gráfico de snacks registrados por día"></div>
+        </article>
+
+        <article class="panel goal-panel">
+          <div class="panel-header"><div><h2>Tu objetivo</h2><p id="goal-period">Esta semana</p></div><button class="edit-button" id="edit-goal">Editar</button></div>
+          <div class="goal-ring" id="goal-ring"><div><strong id="goal-percent">52%</strong><span>completado</span></div></div>
+          <p class="goal-copy">Llevas <strong id="goal-copy-count">11 snacks</strong> de tu meta semanal.</p>
+          <div class="goal-stats"><div><strong id="goal-used">11</strong><span>consumidos</span></div><div><strong id="goal-left">10</strong><span>disponibles</span></div><div><strong id="goal-average">1.6</strong><span>promedio / día</span></div></div>
+        </article>
+      </section>
+
+      <section class="bottom-grid">
+        <article class="panel recent-panel" id="historial">
+          <div class="panel-header"><div><h2>Últimos snacks</h2><p>Lo que has registrado recientemente</p></div><a class="text-link" href="#historial">Ver historial <span>→</span></a></div>
+          <div id="snack-list" class="snack-list"></div>
+        </article>
+        <article class="panel insight-panel"><div class="insight-badge">✦</div><p class="eyebrow">TU INSIGHT</p><h2>Vas encontrando tu ritmo</h2><p>Tu promedio bajó un 12% esta semana. Sigue escuchando lo que tu cuerpo necesita.</p><div class="insight-footer"><span>Basado en tus últimos 30 días</span><span>↗</span></div></article>
+      </section>
+      <footer class="app-footer">Snakeate <span>•</span> Tus datos se guardan solo en este dispositivo.</footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="snack-modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="close-modal" aria-label="Cerrar">×</button>
+      <p class="eyebrow">NUEVO REGISTRO</p><h2 id="modal-title">¿Qué snack disfrutaste?</h2><p class="muted">Anótalo en unos segundos. Sin juicios, solo información.</p>
+      <form id="snack-form">
+        <label>Nombre del snack<input id="snack-name" required placeholder="Ej. Yogur con fruta"></label>
+        <div class="form-row"><label>Calorías<input id="snack-calories" type="number" min="0" max="3000" required placeholder="150"></label><label>Hora<input id="snack-time" type="time" required></label></div>
+        <label class="category-label">Categoría</label><div class="category-options"><button type="button" class="category-option selected" data-category="Dulce">Dulce</button><button type="button" class="category-option" data-category="Salado">Salado</button><button type="button" class="category-option" data-category="Fruta">Fruta</button><button type="button" class="category-option" data-category="Bebida">Bebida</button></div>
+        <button class="primary-button full-button" type="submit">Guardar snack <span>→</span></button>
+      </form>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
